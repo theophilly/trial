@@ -154,11 +154,7 @@ document.onmouseup = mousehandler;
 
 //typing
 const textDisplay = document.getElementById('text');
-const phrases = [
-  'Hello, my name is Ania.',
-  'I love to code.',
-  'I love to teach.',
-];
+const phrases = ['I love to code.', 'I love to help.'];
 let i = 0;
 let j = 0;
 let currentPhrase = [];
