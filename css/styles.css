@@ -173,7 +173,7 @@ img {
 }
 @media screen and (max-width: 767px) {
   #fill {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
   .home_social {
     display: none !important;
