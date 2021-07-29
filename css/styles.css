@@ -424,13 +424,13 @@ img {
   width: 85%;
 }
 .skills_css {
-  width: 75%;
+  width: 80%;
 }
 .skills_js {
-  width: 55%;
+  width: 70%;
 }
-.skills_bootstrap {
-  width: 60%;
+.skills_react {
+  width: 75%;
 }
 .skills_php {
   width: 40%;
@@ -621,6 +621,7 @@ img {
 }
 .portfolio_img {
   width: 265px;
+  height: 180px;
   border-radius: 0.5rem;
   justify-self: center;
 }
@@ -630,6 +631,10 @@ img {
 }
 .portfolio_description {
   margin-bottom: var(--mb-0-75);
+}
+.portfolio_buttons {
+  display: flex;
+  gap: 10px;
 }
 .portfolio_button:hover .button_icon {
   transform: translateX(0.25rem);
