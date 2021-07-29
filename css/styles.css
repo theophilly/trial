@@ -634,7 +634,9 @@ img {
 }
 .portfolio_buttons {
   display: flex;
-  gap: 10px !important;
+}
+.button_github {
+  margin-right: 10px;
 }
 .portfolio_button:hover .button_icon {
   transform: translateX(0.25rem);
