@@ -172,6 +172,9 @@ img {
   margin-top: -40px;
 }
 @media screen and (max-width: 767px) {
+  #fill {
+    margin-bottom: 50px;
+  }
   .home_social {
     display: none !important;
   }
@@ -267,8 +270,8 @@ img {
   font-weight: var(--font-medium);
   margin-bottom: var(--mb-0-75);
 }
-.home_description {
-  margin: 30px 0px 60px;
+#home_description {
+  margin: 50px 0px 90px;
 }
 .home_scroll {
   display: none;
