@@ -266,7 +266,7 @@ contact_form.addEventListener('submit', (e) => {
     formdata.append('email', emailInputValue);
     formdata.append('content', messageInputValue);
 
-    fetch('http://advicebox.herokuapp.com/api/receivemail', {
+    fetch('https://advicebox.herokuapp.com/api/receivemail', {
       method: 'post',
       headers: {
         'Content-type': 'application/json',
