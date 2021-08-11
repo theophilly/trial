@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Adeyemi Kolade Frontend Developer from Nigeria, with 3 years experience in building and maintaining responsive websites"
+    />
+    <meta
+      name="keywords"
+      content="Adeyemi Kolade, CSS, JavaScript, Frontend developer, Nigeria"
+    />
+    <meta name="author" content="Adeyemi Kolade" />
 
     <!--==================== UNICONS ====================-->
     <link
@@ -16,7 +25,7 @@
     <!--==================== CSS ====================-->
     <link rel="stylesheet" href="css/styles.css" />
 
-    <link rel="icon" href="icon.png" type="image/gif" sizes="16x16" />
+    <link rel="icon" href="user.png" type="image/gif" sizes="16x16" />
 
     <title>Adeyemi Kolade | Portfolio | Frontend Developer</title>
   </head>
@@ -178,7 +187,11 @@
         <span class="section_subtitle">My Introduction</span>
 
         <div class="about_container container grid">
-          <img src="img/me.png" alt="about" class="about_img" />
+          <img
+            src="img/me.png"
+            alt="Adeyemi Kolade portfolio image"
+            class="about_img"
+          />
 
           <div class="about_data">
             <p class="about_description">
@@ -1322,53 +1335,61 @@
             </div>
           </div>
 
-          <form action="#" class="contact_form grid" method="POST">
+          <form class="contact_form grid" method="POST">
             <div class="contact_inputs grid">
+              <div class="name_wrapper">
+                <div class="contact_content name_success">
+                  <label for="name" class="contact_label">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="contact_input"
+                  />
+                </div>
+                <small>error message</small>
+              </div>
+
+              <div class="email_wrapper">
+                <div class="contact_content">
+                  <label for="email" class="contact_label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="contact_input"
+                  />
+                </div>
+                <small>error message</small>
+              </div>
+            </div>
+            <div class="subject_wrapper">
               <div class="contact_content">
-                <label for="name" class="contact_label">Name</label>
+                <label for="subject" class="contact_label">Project</label>
                 <input
                   type="text"
-                  name="name"
-                  id="name"
+                  name="subject"
+                  id="subject"
                   class="contact_input"
-                  required
                 />
               </div>
+              <small>error message</small>
+            </div>
 
+            <div class="message_wrapper">
               <div class="contact_content">
-                <label for="email" class="contact_label">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
+                <label for="message" class="contact_label">Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="0"
+                  rows="7"
                   class="contact_input"
-                  required
-                />
+                ></textarea>
               </div>
+              <small>error message</small>
             </div>
 
-            <div class="contact_content">
-              <label for="subject" class="contact_label">Project</label>
-              <input
-                type="text"
-                name="subject"
-                id="subject"
-                class="contact_input"
-                required
-              />
-            </div>
-            <div class="contact_content">
-              <label for="message" class="contact_label">Message</label>
-              <textarea
-                name="message"
-                id="message"
-                cols="0"
-                rows="7"
-                class="contact_input"
-                required
-              ></textarea>
-            </div>
-            <div></div>
             <div>
               <!--<a href="#" type="submit" name="submit" value="Send" class="button button--flex">Send Message<i class="uil uil-message button_icon"></i></a>-->
               <button
@@ -1436,6 +1457,8 @@
     <a href="#" class="scrollup" id="scroll-up"
       ><i class="uil uil-arrow-up scrollup_icon"></i
     ></a>
+    <!--==================== SNACK BAR ====================-->
+    <div id="snackbar">Some text some message..</div>
 
     <!--==================== SWIPER JS ====================-->
     <script

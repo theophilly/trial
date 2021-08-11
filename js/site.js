@@ -148,11 +148,11 @@ function mousehandler(e) {
   var eventbutton = isNS ? myevent.which : myevent.button;
   if (eventbutton == 2 || eventbutton == 3) return false;
 }
-document.oncontextmenu = mischandler;
-document.onmousedown = mousehandler;
-document.onmouseup = mousehandler;
+// document.oncontextmenu = mischandler;
+// document.onmousedown = mousehandler;
+// document.onmouseup = mousehandler;
 
-//typing
+//typing effect
 const textDisplay = document.getElementById('text');
 const phrases = ['I love to code.', 'I love to help.'];
 let i = 0;
@@ -199,3 +199,133 @@ function loop() {
 }
 
 loop();
+
+//form handler
+const nameInput = document.getElementById('name');
+const subjectInput = document.getElementById('subject');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+
+const contact_form = document.querySelector('.contact_form');
+
+contact_form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const nameInputValue = nameInput.value.trim();
+  const subjectInputValue = subjectInput.value.trim();
+  const emailInputValue = emailInput.value.trim();
+  const messageInputValue = messageInput.value.trim();
+
+  let checkName;
+  let checkSubject;
+  let checkEmail;
+  let checkMessage;
+
+  if (nameInputValue == '') {
+    setErrorFor(nameInput, 'Name cannot be blank', '.name_wrapper');
+    checkName = true;
+  } else {
+    nameInput.parentNode.classList.remove('error');
+    nameInput.parentNode.classList.add('success');
+    checkName = false;
+  }
+
+  if (subjectInputValue == '') {
+    setErrorFor(subjectInput, 'Subject cannot be blank', '.subject_wrapper');
+    checkSubject = true;
+  } else {
+    subjectInput.parentNode.classList.remove('error');
+    subjectInput.parentNode.classList.add('success');
+    checkSubject = false;
+  }
+
+  if (emailInputValue == '') {
+    setErrorFor(emailInput, 'Email cannot be blank', '.email_wrapper');
+    checkEmail = true;
+  } else if (!isEmail(emailInputValue)) {
+    setErrorFor(emailInput, 'Not a valid email', '.email_wrapper');
+    checkEmail = true;
+  } else {
+    emailInput.parentNode.classList.add('success');
+    emailInput.parentNode.classList.remove('error');
+    checkEmail = false;
+  }
+
+  if (messageInputValue == '') {
+    setErrorFor(messageInput, 'Message cannot be blank', '.message_wrapper');
+    checkMessage = true;
+  } else {
+    messageInput.parentNode.classList.remove('error');
+    messageInput.parentNode.classList.add('success');
+    checkEmail = false;
+  }
+
+  if (!checkMessage && !checkName && !checkSubject && !checkEmail) {
+    let formdata = new FormData();
+    formdata.append('subject', subjectInputValue);
+    formdata.append('email', emailInputValue);
+    formdata.append('content', messageInputValue);
+
+    fetch('http://advicebox.herokuapp.com/api/receivemail', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        subject: subjectInputValue,
+        email: emailInputValue,
+        content: messageInputValue,
+      }),
+    })
+      .then(function (data) {
+        console.log('Request succeeded with JSON response', data);
+        myFunction('message sent successfully', 'success');
+        clearInputs();
+      })
+      .catch(function (error) {
+        console.log('Request failed', error);
+        myFunction('something went wrong', 'error');
+      });
+  }
+
+  function clearInputs() {
+    nameInput.value = '';
+    subjectInput.value = '';
+    emailInput.value = '';
+    messageInput.value = '';
+
+    nameInput.parentNode.classList.remove('success');
+    emailInput.parentNode.classList.remove('success');
+    subjectInput.parentNode.classList.remove('success');
+    messageInput.parentNode.classList.remove('success');
+  }
+});
+
+function isEmail(email) {
+  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
+}
+
+function setErrorFor(input, message, wrapperClass) {
+  const formControl = input.parentElement;
+  formControl.classList.remove('success');
+  formControl.classList.add('error');
+  const wrapper = document.querySelector(wrapperClass);
+  const small = wrapper.querySelector('small');
+  small.innerText = message;
+}
+
+//snackbar
+function myFunction(message, type) {
+  var x = document.getElementById('snackbar');
+  x.innerText = message;
+  if (type === 'error') {
+    x.className = 'show error';
+  } else {
+    x.className = 'show success';
+  }
+  setTimeout(function () {
+    x.className = x.className.replace('show', '');
+  }, 3000);
+}
