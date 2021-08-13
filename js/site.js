@@ -261,11 +261,6 @@ contact_form.addEventListener('submit', (e) => {
   }
 
   if (!checkMessage && !checkName && !checkSubject && !checkEmail) {
-    let formdata = new FormData();
-    formdata.append('subject', subjectInputValue);
-    formdata.append('email', emailInputValue);
-    formdata.append('content', messageInputValue);
-
     fetch('https://advicebox.herokuapp.com/api/receivemail', {
       method: 'post',
       headers: {
@@ -278,7 +273,6 @@ contact_form.addEventListener('submit', (e) => {
       }),
     })
       .then(function (data) {
-        console.log('Request succeeded with JSON response', data);
         myFunction('message sent successfully', 'success');
         clearInputs();
       })
