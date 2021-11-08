@@ -347,7 +347,7 @@ img {
 }
 .about_info {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start !important;
   margin-bottom: var(--mb-2-5);
 }
 .about_info-title {
@@ -1125,6 +1125,12 @@ textarea {
   color: aliceblue;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@media screen and (max-width: 400px) {
+  .about_info {
+    justify-content: space-evenly !important;
+  }
 }
 
 @-webkit-keyframes fadein {
